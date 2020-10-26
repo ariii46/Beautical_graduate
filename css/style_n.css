@@ -1,0 +1,44 @@
+.div_page{
+	border:1px blue solid;
+}
+
+.div_photo_picker{
+	border-radius:5px;
+	border:solid 1px black;
+	padding:10px;
+	min-width:100px;
+	min-height:100px;
+}
+
+.img_selected{
+	box-shadow:2px 2px 2px rgba(0,0,0,0.2);
+	object-fit:cover;
+	margin:5px;
+}
+
+.spn_dev{
+	display:inline;
+}
+
+
+.spn_page_title{
+	background-color:#AFE3F7;
+}
+
+.icon_list>li{
+	display: inline;
+	list-style-type: none;
+}
+
+table{
+	border-collapse:collapse;/*セル同士の間に隙間を空けない*/
+}
+
+th{
+	border:1px solid silver;
+}
+
+td{
+	border:1px solid silver;
+}
+

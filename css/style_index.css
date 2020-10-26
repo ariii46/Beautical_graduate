@@ -1,0 +1,48 @@
+body {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    color: #2a3d50;
+    background-color: #EEF5F7;
+}
+
+.fa-user-circle{
+font-size: 30px;
+margin-top: 10px;
+}
+
+.login_form{
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+.login{
+    margin: 50px;
+    margin-top: 50%;
+    background-color: #fafafa;
+}
+.login_title{
+    font-size: 20px;
+    font-weight: 700;
+}
+.login_txt {
+    display: block;
+    text-align: center;
+    width: 200px;
+    border: solid 1px;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: #DDE2E5;
+}
+
+.login button {
+    margin-top: 3px;
+    margin-bottom: 15px;
+    background-color: #AFDDDE;
+    border: solid 1px;
+    border-radius: 5px;
+    width: 200px;
+    font-weight: 600;
+
+}

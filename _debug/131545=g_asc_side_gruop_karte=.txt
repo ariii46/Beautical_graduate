@@ -1,0 +1,21 @@
+Array
+(
+    [rdo_hair_damage] => Array
+        (
+            [front] => 傷み
+            [back] => 健康
+        )
+
+    [rdo_head_solid] => Array
+        (
+            [front] => 硬
+            [back] => 柔
+        )
+
+    [rdo_hair_gloss] => Array
+        (
+            [front] => パサパサ
+            [back] => ツヤツヤ
+        )
+
+)

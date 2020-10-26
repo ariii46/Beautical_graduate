@@ -1,0 +1,588 @@
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 14px;
+    margin-top: 50px;
+    /* background-color: #fcfeff; */
+}
+
+.spn_dev {
+    display: none;
+}
+
+.div_page_title {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 15px 0;
+}
+
+.div_page_logout_btn {
+    padding: 3px 12px;
+    border: solid 2px #d13949;
+    border-radius: 30px;
+    color: #d13949;
+    height: 40px;
+    padding-top: 7px;
+}
+.div_page_logout_btn a {
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #d13949;
+}
+
+.div_page_logout_btn:hover {
+    background-color: #ffced3;
+    transition: all 0.5s ease;
+}
+
+.spn_page_title {
+    font-size: 25px;
+    font-weight: 700;
+    display: inline;
+    /* margin-bottom: 15px; */
+}
+
+.spn_ope {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.div_page {
+    color: #05223c;
+    margin-top: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.icon_list {
+    display: grid;
+    width: 1020px;
+    grid-template-columns: repeat(5, 130px);
+    font-size: 12px;
+    justify-content: end;
+}
+
+.icon_list li span {
+    font-size: 3.5em;
+    width: 1.7em;
+    height: 1.7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 50%;
+    border: solid 2px #6fbabc;
+}
+
+.icon_list li span:hover {
+    background-color: #6fbabc;
+    transition: all 0.5s ease;
+}
+
+.icon_list li {
+    text-align: center;
+}
+
+#ahr_zoom i {
+    text-decoration: none;
+}
+
+.div_tt_search {
+    margin: 20px 0 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+#tdt_timetable {
+    border: 1px solid #6fbabc;
+    border-radius: 5px;
+    height: 35px;
+    text-align: center;
+}
+
+#ul_hamburger {
+    width: 200px;
+}
+#ahr_zoom {
+    color: #05223c;
+}
+/* 検索のテキスト入力欄 */
+#txt_search_tt_word {
+    background-color: #eaf6fd;
+    border-radius: 5px;
+    border: solid 1px #afddde;
+    height: 35px;
+    width: 280px;
+    vertical-align: middle;
+}
+#txt_search_order {
+    background-color: #eaf6fd;
+    border-radius: 5px;
+    border: solid 1px #afddde;
+    height: 35px;
+    width: 280px;
+    vertical-align: middle;
+}
+
+.txt_search_user {
+    background-color: #eaf6fd;
+    border-radius: 5px;
+    border: solid 1px #afddde;
+    height: 35px;
+    width: 280px;
+    vertical-align: middle;
+}
+
+#div_top_timetable {
+    border-radius: 50px;
+}
+
+/* 各tableのcss */
+#tbl_timetable {
+    width: 1200px;
+    border-radius: 20px;
+}
+#tbl_manage_user {
+    width: 1200px;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+#tbl_manage_order {
+    width: 1200px;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+#tbl_add_order {
+    width: 1200px;
+    border-radius: 20px;
+}
+
+#tbl_timetable thead {
+    background-color: #afddde;
+}
+#tbl_manage_user thead {
+    background-color: #afddde;
+}
+#tbl_manage_order thead {
+    background-color: #afddde;
+}
+#tbl_add_order thead {
+    background-color: #afddde;
+}
+
+#tbl_timetable th {
+    vertical-align: middle;
+    border: 2px solid #6fbabc;
+}
+#tbl_manage_user th {
+    vertical-align: middle;
+    border: 2px solid #6fbabc;
+}
+#tbl_manage_order th {
+    vertical-align: middle;
+    border: 2px solid #6fbabc;
+}
+#tbl_add_order th {
+    vertical-align: middle;
+    border: 2px solid #6fbabc;
+}
+
+#tbl_timetable td {
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid #6fbabc;
+    background-color: #fff;
+}
+#tbl_manage_user td {
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid #6fbabc;
+    background-color: #fff;
+}
+#tbl_manage_order td {
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid #6fbabc;
+    background-color: #fff;
+}
+#tbl_add_order td {
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid #6fbabc;
+    background-color: #fff;
+}
+
+/* /////////////////////////////////////// */
+/* ボタンのcss */
+
+/* 検索・新規・鉛筆のボタン */
+.btn_search_tt,
+.btn_search_user,
+.btn_search_order,
+.btn_add_order,
+.btn_edit_user,
+.btn_add_order_counsel_datetime,
+.btn_add_order_counsel_result,
+.btn_add_order_prepaid,
+.btn_add_order_ope,
+.btn_add_order_karte {
+    margin: 0 10px 0 10px;
+    padding: 3px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    /* border: solid 1px #afddde; */
+    border-radius: 5px;
+    background-color: #afddde;
+    box-shadow: 0px 2px 0 0 #6fbabc;
+}
+.btn_search_tt:active,
+.btn_search_user:active,
+.btn_add_order:active,
+.btn_edit_user:active,
+.btn_add_order_counsel_datetime:active,
+.btn_add_order_counsel_result:active,
+.btn_add_order_prepaid:active,
+.btn_add_order_ope:active,
+.btn_add_order_karte:active {
+    box-shadow: 0px 0 0 0 #6fbabc;
+    transform: translateY(2px);
+}
+
+.btn_timetable_date,
+.btn_show_order_counsel_result,
+/* .btn_edit_order_counsel_result, */
+.btn_edit_order_counsel_datetime,
+.btn_show_order_ope,
+.btn_edit_order_ope,
+.btn_edit_order_prepaid,
+.btn_show_order_karte,
+.btn_order_counsel_result_start {
+    border: 1px solid #6fbabc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    margin: 8px;
+    box-shadow: 0px 2px 0 0 #6fbabc;
+}
+
+.btn_timetable_date:active,
+.btn_show_order_counsel_result:active,
+.btn_edit_order_counsel_result:active,
+.btn_edit_order_counsel_datetime:active,
+.btn_show_order_ope:active,
+.btn_edit_order_prepaid:active,
+.btn_show_order_karte:active,
+.btn_edit_order_ope:active,
+.btn_order_counsel_result_start:active {
+    box-shadow: 0px 0 0 0 #afddde;
+    transform: translateY(2px);
+}
+/* ここわからん */
+/* .btn_edit_order_ope_sub {
+    width: 150px;
+    border: solid 2px #afddde;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 5px 15px;
+    font-weight: 600;
+} */
+
+/* 登録ボタン */
+
+.btn_reg_order_counsel_datetime,
+.btn_reg_order_counsel_result,
+.btn_reg_order_prepaid,
+.btn_reg_order_ope,
+.btn_reg_order_karte,
+.btn_reg_salon_data {
+    color: #eaf6fd;
+    font-weight: 600;
+    width: 150px;
+    border-radius: 5px;
+    background-color: #05223c;
+    border: solid 2px #05223c;
+    padding: 5px 15px;
+    margin: 20px 20px;
+    box-shadow: 0px 2px 0 0 #eaf6fd;
+}
+
+/* 登録ボタン */
+.btn_reg_user,
+.btn_reg_order_counsel_datetime,
+.btn_reg_order_counsel_result,
+.btn_reg_order_prepaid,
+.btn_reg_order_ope,
+.btn_reg_order_karte,
+.btn_reg_salon_data {
+    color: #eaf6fd;
+    font-weight: 600;
+    width: 150px;
+    border-radius: 5px;
+    background-color: #05223c;
+    border: solid 2px #05223c;
+    padding: 5px 15px;
+    margin: 20px 20px;
+    box-shadow: 0px 2px 0 0 #eaf6fd;
+}
+/* キャンセルボタン */
+.btn_cancel {
+    width: 150px;
+    border: 2px solid #05223c;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 5px 15px;
+    font-weight: 600;
+    margin: 20px 20px;
+    box-shadow: 0px 2px 0 0 #05223c;
+}
+.btn_cancel:active {
+    box-shadow: 0px 0 0 0 #fff;
+    transform: translateY(2px);
+}
+
+/* カウンセリング（閲覧）の編集ボタン */
+.btn_edit_order_counsel_result {
+    width: 150px;
+    border: 2px solid #afddde;
+    border-radius: 5px;
+    background-color: #afddde;
+    padding: 5px 15px;
+    font-weight: 600;
+    margin: 20px 20px;
+    box-shadow: 0px 2px 0 0 #f5f5f5;
+}
+/* 編集ボタン */
+.btn_edit_order_karte,
+.btn_edit_salon_data,
+.btn_hensyu_order_counsel_result {
+    width: 150px;
+    border: 1px solid #afddde;
+    border-radius: 5px;
+    background-color: #afddde;
+    margin: 20px;
+    padding: 5px 20px;
+    font-weight: 600;
+    box-shadow: 0px 2px 0 0 #f5f5f5;
+}
+/* もどるボタン */
+.btn_back {
+    width: 150px;
+    border: solid 2px #afddde;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 5px 15px;
+    font-weight: 600;
+    box-shadow: 0px 2px 0 0 #afddde;
+}
+
+.btn_back:active {
+    box-shadow: 0px 0 0 0 #afddde;
+    transform: translateY(2px);
+}
+/* 新規顧客登録ボタン */
+#btn_add_user {
+    /* color: #eaf6fd; */
+    width: 200px;
+    border: 1px solid #9eacb4;
+    border-radius: 5px;
+    background-color: #5ca5c9;
+    margin: 0 0 0 50px;
+    padding: 5px 20px;
+    font-weight: 600;
+    box-shadow: 0px 2px 0 0 #9eacb4;
+}
+#btn_add_user:active {
+    box-shadow: 0px 0 0 0 #9eacb4;
+    transform: translateY(2px);
+}
+
+/* /////////////////////////////////////// */
+
+.div_page_user_search {
+    margin: 10px 0;
+}
+
+.div_page_edit_user {
+    margin: 0 auto;
+}
+.div_page_user {
+    margin-top: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-weight: 600;
+}
+.birthday {
+    margin: 0 auto;
+}
+.div_page_edit_user input {
+    display: block;
+    border-radius: 5px;
+    border: solid 2px #afddde;
+    background-color: #fff;
+    width: 500px;
+    height: 30px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.txt_user_name,
+.txt_user_yomi,
+.txd_user_birthday,
+.txt_user_email,
+.txt_user_tel,
+.txt_user_hpid {
+    display: block;
+    border-radius: 5px;
+    border: solid 2px #afddde;
+    background-color: #fff;
+    width: 500px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.div_user_birthday_sex {
+    margin-bottom: 20px;
+}
+
+.txt_user_sex {
+    margin-left: 50px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.div_btn_edit {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* カウンセリング日時 */
+/* #div_page_edit_order_counsel_datetime {
+    font-weight: 600;
+} */
+.tdl_order_counsel_datetime,
+.txt_order_counsel_stylist {
+    display: block;
+    border-radius: 5px;
+    border: solid 2px #afddde;
+    background-color: #fff;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+/* カウンセリング内容 */
+.tta_user_message,
+.tta_salon_memo {
+    display: block;
+    width: 600px;
+    height: 100px;
+    border: 2px solid #6fbabc;
+    background-color: #fff;
+    border-radius: 5px;
+}
+/* 事前決済画面 */
+/* #div_page_edit_order_prepaid {
+    font-weight: 600;
+} */
+
+.txt_order_prepaid_price {
+    display: block;
+    border-radius: 5px;
+    border: solid 2px #6fbabc;
+    background-color: #fff;
+    width: 300px;
+    height: 30px;
+    /* margin: 0 auto; */
+    margin-bottom: 20px;
+}
+
+.tta_order_ope_menu {
+    display: block;
+    border-radius: 5px;
+    border: solid 2px #afddde;
+    background-color: #fff;
+    /* width: 300px; */
+    height: 30px;
+    /* margin: 0 auto; */
+    margin-bottom: 20px;
+}
+
+/* 施術画面 */
+/* inputの枠の部分 */
+.txt_order_ope_stylist,
+.tdl_order_visit_datetime,
+.tta_order_ope_menu,
+.txt_order_ope_price {
+    margin-bottom: 20px;
+    display: block;
+    width: 600px;
+    border: 2px solid #6fbabc;
+    background-color: #fff;
+    border-radius: 5px;
+}
+/* カルテ画面 */
+.tta_order_ope_detail {
+    display: block;
+    width: 600px;
+    height: 100px;
+    border: 2px solid #6fbabc;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* サロン情報設定画面 */
+/* inputの枠部分 */
+.txt_salon_name,
+.txt_salon_addr1,
+.txt_salon_addr2,
+.txt_salon_tel,
+.txt_salon_email,
+.txt_salon_hp,
+.txt_salon_insta,
+.txt_salon_blog,
+.txt_salon_fb,
+.txt_salon_latlng,
+.txt_salon_youtube,
+.txt_salon_map,
+.txt_salon_zoom {
+    margin-bottom: 20px;
+    display: block;
+    width: 600px;
+    border: 2px solid #6fbabc;
+    background-color: #fff;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.spn_salon_name,
+.spn_salon_addr1,
+.spn_salon_addr2,
+.spn_salon_tel,
+.spn_salon_email,
+.spn_salon_hp,
+.spn_salon_insta,
+.spn_salon_blog,
+.spn_salon_youtube,
+.spn_salon_map,
+.spn_salon_zoom{
+    font-weight: 500;
+    font-size: 18px;
+}
+
+/* 写真のinput部分の枠 */
+.div_photo_picker {
+    display: block;
+    /* width: 600px; */
+    /* height: 100px; */
+    border: 2px solid #6fbabc;
+    background-color: #fff;
+    border-radius: 5px;
+    min-height: 30px;
+}
+
+.salon {
+    font-weight: 600;
+}
+
+.hr_counsel {
+    border: solid 1px;
+}

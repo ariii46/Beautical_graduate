@@ -1,0 +1,17 @@
+array (
+  0 => '42000',
+  1 => 1064,
+  2 => 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'WHERE order_ai=9\' at line 1',
+)
+UPDATE 41_order_tbl SET  WHERE order_ai=:order_ai
+
+ a_asc_set=array (
+)
+
+ a_asc_bind=array (
+  'order_ai' => 
+  array (
+    'val' => '9',
+    'type' => 1,
+  ),
+)

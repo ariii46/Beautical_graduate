@@ -1,0 +1,404 @@
+body {
+    padding-top: 60px;
+    font-family: "Noto Sans JP", sans-serif;
+    color: #2a3d50;
+    font-size: 14px;
+    /* background-color: #ebecf0; */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.top {
+    text-align: center;
+}
+
+/* PCヘッダー */
+.pc_header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: #afddde;
+    position: fixed;
+    top: 0;
+    z-index: 500;
+    /* border-bottom: solid 2px #2a3d50; */
+}
+
+.pc_header .logo {
+    line-height: 0;
+}
+
+.pc_header .logo img {
+    height: 30px;
+}
+
+.pc_header ul {
+    display: flex;
+}
+
+.pc_header ul li a {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    padding: 0.2em 0.5em;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 480px) {
+    .pc_header {
+        display: none;
+    }
+}
+
+/* スマホヘッダー */
+.sp_header {
+    display: none;
+    width: 100%;
+    height: 50px;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: flex-end;
+    /* border-bottom: solid 2px #2a3d50; */
+    background: #eef5f7;
+    position: fixed;
+    top: 0;
+    z-index: 500;
+}
+.sp_header .logo {
+    line-height: 0;
+    margin-right: auto;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sp_header .logo img {
+    height: 30px;
+}
+@media screen and (max-width: 480px) {
+    .sp_header {
+        display: flex;
+    }
+}
+
+/* 文字小さくするにはどうしたら良いの？ */
+.btn_logout span {
+    font-size: 6px;
+}
+
+/* ハンバーガーボタン */
+.drawr_btn {
+    font-size: 10px;
+    width: 4em;
+    height: 4em;
+    background: #546678;
+    border-radius: 100%;
+    position: relative;
+    z-index: 10;
+    margin-left: 10px;
+}
+
+.drawr_btn span {
+    display: block;
+    width: 50%;
+    height: 0.3em;
+    background: #fff;
+    border-radius: 10em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transition: 0.3s;
+}
+.drawr_btn span:nth-child(1) {
+    transform: translateY(-0.7em);
+}
+.drawr_btn span:nth-child(3) {
+    transform: translateY(0.7em);
+}
+
+.drawr_btn.active span:nth-child(1) {
+    transform: rotate(225deg);
+}
+.drawr_btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.drawr_btn.active span:nth-child(3) {
+    transform: rotate(-225deg);
+}
+
+/* ハンバーガー中身 */
+.drawr_content {
+    width: 100vw;
+    height: calc(100vh - 50px);
+    background: #eee;
+    position: fixed;
+    top: 50px;
+    left: 100vw;
+    z-index: 9;
+    opacity: 0;
+    transition: 0.3s;
+}
+.drawr_content.active {
+    left: 0;
+    opacity: 1;
+}
+.drawr_content i {
+    margin-right: 10px;
+}
+.drawr_content a {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    font-size: 18px;
+    color: #2a3d50;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid #ccc;
+}
+
+.fa-home:before,
+.fa-clipboard:before,
+.fa-calendar-alt:before,
+.fa-credit-card:before,
+.fa-user-circle:before,
+.fa-sign-out-alt:before{
+    margin-left: 10px;
+}
+
+
+
+.top_user_name {
+    text-align: left;
+    margin-left: 5px;
+}
+
+/* メインメニュー */
+
+.btn_counsel_answer {
+    background-color: #f2e4a5;
+    font-size: 14px;
+    font-weight: 600;
+    height: 35px;
+    vertical-align: middle;
+    padding-top: 5px;
+}
+.btn_counsel_answer a {
+    color: #926929;
+    text-decoration: none;
+    height: 25px;
+    vertical-align: middle;
+}
+.btn_counsel_answer p {
+    color: #926929;
+    text-decoration: none;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.content_top {
+    margin-top: 20px;
+}
+
+.content_top p {
+    font-weight: 600;
+}
+
+.dot_txt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.dot_txt::before,
+.dot_txt::after {
+    content: "";
+    display: block;
+    width: 4em;
+    border-top: 0.2em dotted #aaa;
+    margin: 0 1em;
+}
+
+.content_top h3 {
+    font-size: 18px;
+    color: #5ca5c9;
+}
+
+.content_top span {
+    color: #9eacb4;
+}
+
+.content_list_up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.content_list_down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.content_list img {
+    border-radius: 10px;
+    margin: 10px 10px 0px 10px;
+    /* border-radius: 10px;
+    background: #ebecf0;
+    box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff; */
+}
+
+.content_list p {
+    font-weight: 600;
+}
+
+.btn_counsel_start {
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 auto;
+    font-weight: 700;
+    padding: 10px 0 15px 0;
+}
+.btn_counsel_start a {
+    font-size: 16px;
+    display: inline-block;
+    padding: 0.5em 2em;
+    line-height: 1;
+    border-radius: 10px;
+    color: #2a3d50;
+    text-decoration: none;
+    background: #eaf6fd;
+    box-shadow: 0px 2px 0 0 #afddde;
+}
+
+.btn_counsel_start a:active {
+    box-shadow: 0px 0 0 0 #afddde;
+    transform: translateY(2px);
+}
+
+.btn_counsel_start span {
+    color: #5ca5c9;
+    margin-left: 5px;
+}
+
+.btn_counsel_start_effect div {
+    vertical-align: middle;
+}
+
+/* フッター */
+.animation {
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    border: 2px solid #c3c7cc;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    /* border-radius: 10px;
+    background: #ebecf0;
+    box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff; */
+}
+.animation a {
+    font-family: arial;
+    font-size: 12px;
+    color: #2a3d50;
+    text-decoration: none;
+    line-height: 50px;
+    transition: all 0.1s ease;
+    z-index: 2;
+    position: relative;
+}
+.effect {
+    widows: 400px;
+    height: 50px;
+    top: -2px;
+    left: -140px;
+    background: #bbbbbb;
+    position: absolute;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+.animation:hover .effect {
+    left: 0;
+}
+.animation:hover a {
+    color: #c3c7cc;
+}
+
+.contact {
+    background-color: #f9fafc;
+}
+
+.contact_txt {
+    padding-top: 30px;
+}
+
+.contact_salon_name {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* Google マップのcss */
+.ggmap {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+    margin: 0 10px;
+}
+.ggmap iframe,
+.ggmap object,
+.ggmap embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* フッターアイコン */
+.sns_icon img {
+    padding: 10px;
+}
+
+.footer_name {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+footer i {
+    margin: 0 2px;
+}
+
+.fa-cut:before,
+.fa-instagram:before,
+.fa-blogger:before,
+.fa-youtube:before {
+    font-size: 25px;
+    margin: 0 5px;
+    color: #546678;
+}
+
+.footer_salon_name {
+    margin-top: 10px;
+}
