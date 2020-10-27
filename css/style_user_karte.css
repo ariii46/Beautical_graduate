@@ -324,6 +324,7 @@ footer i {
     font-weight: 600;
     border-bottom: 1px solid #9eacb4;
     border-left: solid 3px #2a3d50;
+    margin-top: 20px;
 }
 
 .yomo_3 {
@@ -343,25 +344,35 @@ footer i {
     font-weight: 500;
 }
 
+.side_gruop_karte {
+    display: inline-block;
+    width: 4em;
+    text-align: right;
+}
+
+.div_karte_gruop img {
+    width: 80%;
+    height: 80%;
+}
+
 /* 髪質診断関連のCSS */
 
-
 .radio + .radio_image {
-	border: 3px #ffffff solid;
+    border: 3px #ffffff solid;
     background-color: #ffffff;
 }
 .radio:checked + .radio_image {
-	border: 3px #ff0000 solid;
+    border: 3px #ff0000 solid;
     background-color: #ffeeee;
 }
 
-.karte1{
+.karte1 {
     display: inline;
     justify-content: space-between;
 }
 
 /*Gridの調整*/
-.wrapper{
+/* .wrapper{
     display:grid;
     grid-template-columns: 150px 45px 45px 45px 45px 45px 150px;
     grid-template-rows: 30px 45px 20px;
@@ -466,4 +477,4 @@ footer i {
     text-align: center;
     align-self: center;
 }
-
+ */

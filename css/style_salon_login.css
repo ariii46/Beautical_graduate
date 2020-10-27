@@ -2,27 +2,36 @@ body {
     text-align: center;
     font-family: "Noto Sans JP", sans-serif;
     color: #2a3d50;
-    background-color: #EEF5F7;
+    background-color: #eef5f7;
 }
 
-.fa-user-circle{
-font-size: 30px;
-margin-top: 10px;
+.site_title{
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 30px;
 }
 
-.login_form{
+.fa-store {
+    font-size: 35px;
+    margin-top: 10px;
+}
+
+.login_form {
     border: solid 1px;
     border-radius: 10px;
+    background-color: #fafafa;
+    width: 600px;
+    text-align: center;
+    margin: 0 auto;
 }
 
-.login{
+.login {
     margin: 50px;
-    margin-top: 50%;
-    background-color: #fafafa;
 }
-.login_title{
+.login_title {
     font-size: 20px;
     font-weight: 700;
+    margin-bottom: 20px;
 }
 .login_txt {
     display: block;
@@ -33,18 +42,17 @@ margin-top: 10px;
     margin: 0 auto;
     margin-top: 8px;
     margin-bottom: 8px;
-    background-color: #DDE2E5;
+    background-color: #dde2e5;
 }
 
 .login button {
     margin-top: 3px;
     margin-bottom: 15px;
-    background-color: #AFDDDE;
+    background-color: #afddde;
     border: solid 1px;
     border-radius: 5px;
     width: 200px;
     font-weight: 600;
-
 }
 
 input{

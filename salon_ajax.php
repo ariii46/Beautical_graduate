@@ -327,7 +327,7 @@
 		$ary_fld=array('order_user_ai','order_flg_counsel_datetime','order_counsel_datetime','order_counsel_stylist'
 			,'order_flg_counsel_result','order_visit_datetime','order_flg_counsel_yet'
 			,'order_flg_prepaid','order_prepaid_datetime','order_flg_prepaid_sent','order_flg_prepaid_done'
-			,'order_flg_karte','order_karte_datetime'
+			,'order_flg_karte','order_karte_datetime','order_flg_user_filled'
 			,'order_flg_ope','order_ope_stylist','order_ope_menu','order_prepaid_price');//SELECT取得値
 		$where='order_ai=:order_ai';
 		$asc_bind=array();//WHEREのbind値
@@ -382,19 +382,19 @@
 		}
 
 		//$td_order_counsel_result---------------------------------------
-		if($order_flg_counsel_result==true){//登録済み時
+		if($order_flg_user_filled==true){//ユーザー回答済み時
 			$td_order_counsel_result.='<button class="btn_show_order_counsel_result" value="'.$a_order_ai.'">';
-			$td_order_counsel_result.='回答済み</button>';
-		}else{//未登録時
-			$td_order_counsel_result.='<button class="btn_edit_order_counsel_result" value="'.$a_order_ai.'">';
-			$td_order_counsel_result.='＋</button>';
+			$td_order_counsel_result.='お客様回答済み</button>';
+		}else{//ユーザー未回答時
+			$td_order_counsel_result.='<button class="btn_show_order_counsel_result" value="'.$a_order_ai.'">';
+			$td_order_counsel_result.='お客様未回答</button>';
 		}
 
 		//$td_order_prepaid-----------------------------------------------
 		$html_btn='＋';//未作成時
 		if($order_flg_prepaid==true){
 			if($order_flg_prepaid_done==true){
-				$html_btn='決済済み<br>'.$order_prepaid_price.'円';
+				$html_btn='決済済み<br>'.fnc_conv_price('SHOW',$order_prepaid_price);
 				
 			}else if($order_flg_prepaid_sent==true){
 				$html_btn='請求メール<br>送信済み';
@@ -1703,9 +1703,9 @@
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//カルテ(閲覧用）html生成 zzzzzz
+	//カルテ(閲覧用）html生成
 	function fc_make_div_child_show_karte($a_order_ai){
-		global $g_ary_sort_gruop_karte;
+		global $g_ary_sort_gruop_karte,$g_asc_side_gruop_karte;
 		$rnd=mt_rand(1000,9999);
 		$html_order_karte='';
 
@@ -1727,6 +1727,11 @@
 			$html_order_karte.='<br>';
 			//
 			if((strpos($gruop_code,'rdo_')===0)||(strpos($gruop_code,'cbx_')===0)){//radioタグ or checkboxタグ
+				if(strpos($gruop_code,'rdo_')===0){//radioタグ
+					$html_order_karte.='<div style="display:inline-block;width:4em;text-align:right;">';
+					$html_order_karte.=$g_asc_side_gruop_karte[$gruop_code]['front'];
+					$html_order_karte.='</div>';
+				}
 				$s_ary_sort='g_ary_sort_'.$gruop_code;
 				global $$s_ary_sort;
 				$s_asc_term='g_asc_term_'.$gruop_code;
@@ -1735,11 +1740,14 @@
 					$jpn=$$s_asc_term[$val];
 					//
 					if(strpos($gruop_code,'rdo_')===0){//radioタグ
+						$border='';
 						if($asc_rec_order['order_karte_'.$gruop_code]==$val){//選択されたrdoなら
-							$html_order_karte.=$jpn;
-							$html_order_karte.="\n".'<br>';
-							break;//rdoは1つ選択されたらループ抜け
+							$border='border:5px solid silver;';
 						}
+						$html_order_karte.='<div style="display:inline-block;'.$border.'">';
+						$html_order_karte.=$jpn;
+						$html_order_karte.="\n".'<br>';
+						$html_order_karte.='</div>';
 
 					}else if(strpos($gruop_code,'cbx_')===0){//checkboxタグ
 						if(strpos($asc_rec_order['order_karte_'.$gruop_code],",$val,")!==false){//,で囲まれた選択コードがあるなら
@@ -1747,6 +1755,9 @@
 							$html_order_karte.="\n".'<br>';
 						}
 					}
+				}
+				if(strpos($gruop_code,'rdo_')===0){//radioタグ
+					$html_order_karte.=$g_asc_side_gruop_karte[$gruop_code]['back'];
 				}
 			}else if(strpos($gruop_code,'txt_')===0){//input type=text
 				$html_order_karte.=$asc_rec_order['order_karte_'.$gruop_code];
@@ -1893,6 +1904,7 @@
 
 			}else{//編集時--------------------------------
 				$asc_set['order_flg_karte']=array('val'=>true,'type'=>PDO_INT);//「カルテ」が記録されたflg
+				$asc_set['order_flg_ope']=array('val'=>true,'type'=>PDO_INT);//「カルテ」が記録されたら「施術」も登録されたことに
 			}
 			fnc_pdo_update('41_order_tbl',$asc_set,$where,$asc_bind);
 			fnc_set_order_search_term($order_ai);//41_order_tblのorder_search_termを設定
@@ -1939,7 +1951,7 @@
 	//カルテ(編集用）html生成
 	//$a_order_ai>0:編集 $a_order_ai=0:新規
 	function fc_make_div_child_edit_karte($a_order_ai){
-		global $g_ary_sort_gruop_karte;
+		global $g_ary_sort_gruop_karte,$g_asc_side_gruop_karte;
 		$rnd=mt_rand(1000,9999);
 		$order_user_ai=0;
 		$html_order_karte='';
@@ -1971,6 +1983,11 @@
 			$html_order_karte.='<br>';
 			//
 			if((strpos($gruop_code,'rdo_')===0)||(strpos($gruop_code,'cbx_')===0)){//radioタグ or checkboxタグ
+				if(strpos($gruop_code,'rdo_')===0){//radioタグ
+					$html_order_karte.='<div style="display:inline-block;width:4em;text-align:right;">';
+					$html_order_karte.=$g_asc_side_gruop_karte[$gruop_code]['front'];
+					$html_order_karte.='</div>';
+				}
 				$s_ary_sort='g_ary_sort_'.$gruop_code;
 				global $$s_ary_sort;
 				$s_asc_term='g_asc_term_'.$gruop_code;
@@ -1980,11 +1997,14 @@
 					//
 					if(strpos($gruop_code,'rdo_')===0){//radioタグ
 						$checked='';if($asc_rec_order['order_karte_'.$gruop_code]==$val)$checked=' CHECKED';//選択されたrdoなら
-						$html_order_karte.='<label>';//labelタグ
-						$html_order_karte.='<input type="radio" class="post_ui '.$gruop_code.'" name="rdo_'.$gruop_code.'" value="'.$val.'"'.$checked.'>';
+						$html_order_karte.='<div style="display:inline-block;margin:0 10px;text-align:center;">';
+						$html_order_karte.='<label>';
 						$html_order_karte.=$term;
+						$html_order_karte.='<br>';
+						$html_order_karte.='<input type="radio" class="post_ui '.$gruop_code.'" name="rdo_'.$gruop_code.'" value="'.$val.'"'.$checked.'>';
 						$html_order_karte.='</label>';
-						$html_order_karte.="\n".'<br>';
+						$html_order_karte.='</div>';
+						$html_order_karte.="\n";
 
 					}else if(strpos($gruop_code,'cbx_')===0){//checkboxタグ
 						$checked='';if(strpos($asc_rec_order['order_karte_'.$gruop_code],",$val,")!==false)$checked=' CHECKED';//選択されたcbxなら（,で囲まれた選択コードがあるなら）
@@ -1994,6 +2014,9 @@
 						$html_order_karte.='</label>';
 						$html_order_karte.="\n".'<br>';
 					}
+				}
+				if(strpos($gruop_code,'rdo_')===0){//radioタグ
+					$html_order_karte.=$g_asc_side_gruop_karte[$gruop_code]['back'];
 				}
 			}else if(strpos($gruop_code,'txt_')===0){//input type=text
 				$html_order_karte.='<input type="text" class="post_ui '.$gruop_code.'" value="'.$asc_rec_order['order_karte_'.$gruop_code].'">';
@@ -2085,7 +2108,7 @@
 			//41_order_tbl
 			$ary_fld=array('order_user_ai','order_flg_counsel_datetime','order_counsel_datetime','order_counsel_stylist'
 				,'order_flg_counsel_result','order_flg_counsel_yet','order_flg_ope','order_ope_stylist'
-				,'order_flg_prepaid','order_prepaid_datetime','order_flg_karte','order_karte_datetime');//SELECT取得値
+				,'order_flg_prepaid','order_prepaid_datetime','order_flg_karte','order_karte_datetime','order_flg_user_filled');//SELECT取得値
 			$where='order_ai=:order_ai';
 			$asc_bind=array();//WHEREのbind値
 			$asc_bind['order_ai']=array('val'=>$a_order_ai,'type'=>PDO_INT);//指定order_ai
@@ -2149,12 +2172,14 @@
 				$td_order_counsel_datetime.=$html_btn.'</button>';
 
 				//カウンセリング内容
-				$html_btn='＋';//未作成時
-				if($asc_rec_order['order_flg_counsel_result']==true){//作成済み時
-					$html_btn='編集';
+				if($asc_rec_order['order_flg_user_filled']==true){//ユーザー回答済み時
+					$td_order_counsel_result.='<button class="btn_show_order_counsel_result" value="'.$a_order_ai.'">';
+					$td_order_counsel_result.='お客様回答済み</button>';
+				}else{//ユーザー未回答時
+					$td_order_counsel_result.='<button class="btn_add_order_counsel_result" value="'.$a_order_ai.'">';
+					$td_order_counsel_result.='お客様未回答</button>';
 				}
-				$td_order_counsel_result='<button class="btn_add_order_counsel_result" value="'.$a_order_ai.'">';
-				$td_order_counsel_result.=$html_btn.'</button>';
+
 				
 				//事前決済
 				$html_btn='＋';//未作成時
@@ -2467,7 +2492,8 @@
 				$asc_bind['user_ai']=array('val'=>$js_user_ai,'type'=>PDO_INT);
 				if($cbx_delete_user){//削除時-----------------
 					$asc_set['user_flg_deleted']=array('val'=>1,'type'=>PDO_INT);//論理削除を設定
-					fnc_pdo_update('31_user_tbl',$asc_set,$where,$asc_bind);
+					fnc_pdo_update('31_user_tbl',$asc_set,$where,$asc_bind);//論理削除を実行
+					//fnc_pdo_update('41_user_tbl',$asc_set,$where,$asc_bind);//★削除顧客の予約も論理削除
 
 				}else{//編集時--------------------------------
 					fnc_pdo_update('31_user_tbl',$asc_set,$where,$asc_bind);

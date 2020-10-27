@@ -360,8 +360,8 @@ $g_ary_sort_gruop_karte = array(
 $g_asc_side_gruop_karte = array();
 $g_asc_side_gruop_karte['rdo_hair_damage']['front'] = '傷み';
 $g_asc_side_gruop_karte['rdo_hair_damage']['back'] = '健康';
-$g_asc_side_gruop_karte['rdo_head_solid']['front'] = '硬';
-$g_asc_side_gruop_karte['rdo_head_solid']['back'] = '柔';
+$g_asc_side_gruop_karte['rdo_head_solid']['front'] = '硬い';
+$g_asc_side_gruop_karte['rdo_head_solid']['back'] = '柔らかい';
 $g_asc_side_gruop_karte['rdo_hair_gloss']['front'] = 'パサパサ';
 $g_asc_side_gruop_karte['rdo_hair_gloss']['back'] = 'ツヤツヤ';
 

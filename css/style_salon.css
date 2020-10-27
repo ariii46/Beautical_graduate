@@ -586,3 +586,16 @@ body {
 .hr_counsel {
     border: solid 1px;
 }
+
+textarea{
+    border: solid 2px #6fbabc;
+    border-radius: 5px;
+    width: 400px;
+}
+
+.yomo{
+    margin-top: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    border-bottom: solid 1px;
+}

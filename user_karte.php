@@ -199,6 +199,7 @@ function fc_make_div_show_order_karte($a_order_ai)
     //カルテUI表示
 
     foreach ($g_ary_sort_gruop_karte as $gruop_code => $gruop_jpn) {
+        $html_order_karte .= '<div class="div_karte_gruop">';
         $html_order_karte .= '<span class="spn_karte">' . $gruop_jpn . '</span>';
         $html_order_karte .= '<br>';
         //
@@ -207,22 +208,22 @@ function fc_make_div_show_order_karte($a_order_ai)
             global $$s_ary_sort;
             $s_asc_term = 'g_asc_term_' . $gruop_code;
             if (strpos($gruop_code, 'rdo_') === 0) { //radioタグ
+                $html_order_karte .= '<div class="side_gruop_karte">';
                 $html_order_karte .= $g_asc_side_gruop_karte[$gruop_code]['front'];
+                $html_order_karte .= '</div>';
             }
             global $$s_asc_term;
             foreach ($$s_ary_sort as $val) { //$val=rdo,cbxのoption value値
                 $jpn = $$s_asc_term[$val];
                 //
                 if (strpos($gruop_code, 'rdo_') === 0) { //radioタグ
-                    $checked = '';
+                    $border = '';
                     if ($asc_rec_order['order_karte_' . $gruop_code] == $val) { //選択されたrdoなら
-                        $checked = 'checked';
+                        $border = 'border:5px solid silver;';
                     }
-                    $html_order_karte .= '<div style="display:inline-block;">';
+                    $html_order_karte .= '<div style="display:inline-block;' . $border . '">';
                     $html_order_karte .= $jpn;
                     $html_order_karte .= "\n" . '<br>';
-                    $html_order_karte .= '<input type="checkbox" ' . $checked . ' disabled>' . '<br>';
-                    // break; //rdoは1つ選択されたらループ抜け
                     $html_order_karte .= '</div>';
                 } else if (strpos($gruop_code, 'cbx_') === 0) { //checkboxタグ
                     if (strpos($asc_rec_order['order_karte_' . $gruop_code], ",$val,") !== false) { //,で囲まれた選択コードがあるなら
@@ -260,6 +261,7 @@ function fc_make_div_show_order_karte($a_order_ai)
                 $html_order_karte .= '</div>';
             }
         }
+        $html_order_karte .= '</div>';
         $html_order_karte .= '<br>';
     }
     //
